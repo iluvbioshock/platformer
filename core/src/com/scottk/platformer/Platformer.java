@@ -7,6 +7,6 @@ public class Platformer extends Game{
 
     @Override
     public void create() {
-        
+
     }
 }
