@@ -1,5 +1,6 @@
 package com.scottk.platformer.view;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -13,7 +14,9 @@ public class GameScreen implements Screen {
 
         map = new TmxMapLoader().load("map/Level01.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
-        camera = new OrthographicCamera(14f, 14f);
+        float width = Gdx.graphics.getWidth();
+        float height = Gdx.graphics.getHeight();
+        camera = new OrthographicCamera(14f, 14f * (height / width));
         camera.position.set(camera.viewportWidth/ 2f, camera.viewportHeight/ 2f, 0);
     }
 
