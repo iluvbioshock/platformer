@@ -10,7 +10,10 @@ public class GameScreen implements Screen {
     public OrthogonalTiledMapRenderer renderer;
     public OrthographicCamera camera;
     public GameScreen() {
-        map = new TmxLoader().load
+
+        map = new TmxMapLoader().load("map/Level01.tmx");
+        renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
+        camera = new OrthographicCamera(14f, 14f);
     }
 
     @Override
@@ -38,7 +41,7 @@ public class GameScreen implements Screen {
 
     }
 
-    \
+
     @Override
     public void pause() {
 
