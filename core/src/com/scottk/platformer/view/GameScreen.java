@@ -20,7 +20,8 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera(14f, 14f * (height / width));
         camera.position.set(camera.viewportWidth/ 2f, camera.viewportHeight/ 2f, 0);
 
-        spriteBatch = renderer.
+        spriteBatch = renderer.getSpriteBatch();
+        player = new Player();
     }
 
     @Override
