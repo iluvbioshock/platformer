@@ -40,14 +40,17 @@ public class Player {
             }
         }
         TextureRegion[] animationFrame = new TextureRegion[2];
-        animationFrames
+        animationFrames[0]= spriteFrames[9];
+        animationFrames[1]= spriteFrames[10];
+        animation = new Anmation(1f, animationFrames);
+        staetTime = 0f;
     }
 
     public void draw(Batch spriteBatch){
-        spriteBatch.draw(spriteFrames[0], 0, 0, 70 * (1/70f), 100);
+        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, 70 * (1/70f), 100 * (1/70f);
     }
 
     public void update(float deltaTime){
-
+        stateTime += deltaTime;
     };
 }

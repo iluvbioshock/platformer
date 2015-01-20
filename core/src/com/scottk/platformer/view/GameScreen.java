@@ -33,9 +33,17 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0.64f, 0.28f, 0.21f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-     camera.update();
+
+        camera.update();
         renderer.setView(camera);
         renderer.render();
+
+        player.update(delta);
+
+        spriteBatch.begin();
+        player.draw(spriteBatch);
+        spriteBatch.end();
+
     }
 
     @Override
