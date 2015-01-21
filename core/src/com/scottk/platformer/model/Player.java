@@ -42,8 +42,8 @@ public class Player {
         TextureRegion[] animationFrame = new TextureRegion[2];
         animationFrames[0]= spriteFrames[9];
         animationFrames[1]= spriteFrames[10];
-        animation = new Anmation(1f, animationFrames);
-        staetTime = 0f;
+        animation = new Anmation(0.25f, animationFrames);
+        stateTime = 0f;
     }
 
     public void draw(Batch spriteBatch){
@@ -51,6 +51,7 @@ public class Player {
     }
 
     public void update(float deltaTime){
+        position.x += deltaTime;
         stateTime += deltaTime;
     };
 }
