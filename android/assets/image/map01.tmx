@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="background-tiles" tilewidth="32" tileheight="32">
   <image source="background-tiles.png" width="910" height="840"/>
  </tileset>
+ <tileset firstgid="729" name="aliens (1)" tilewidth="32" tileheight="32">
+  <image source="aliens (1).png" trans="ffaa7f" width="980" height="400"/>
+ </tileset>
  <layer name="Tile Layer 1" width="100" height="100">
   <data encoding="base64" compression="zlib">
    eJzt0ckJACEUREHzv5uvF0+COIPbR6qgE+iXEgAAQDy5jhj0iCM34562hSb39Fpoct6ohSbnfG2hyVp/f9dkr5U99Jmnx7u0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOBVBamwQTE=
+  </data>
+ </layer>
+ <layer name="background-tiles" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt0UEKgDAMRUHP3dO7ExdFtE0axRn4+5C3bQCQq1UfwKGdRq3WGTV6LTSpcdVCk7XutNBkjSctNMk10kKTHDMtNIkV0UKTGJEtNJmT0UKTcXq8ix7f4/cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/N0O0mFe1w==
   </data>
  </layer>
 </map>
