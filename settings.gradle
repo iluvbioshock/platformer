@@ -1,1 +1,2 @@
+include ':platformer_'
 include 'desktop', 'core', 'android'
