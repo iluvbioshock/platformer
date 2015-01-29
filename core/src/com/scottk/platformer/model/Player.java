@@ -13,39 +13,16 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Player {
     public Vector2 position;
-    public Texture spriteSheet;
     public Animation animation;
-    public TextureRegion[] spriteFrames;
+    public Spritesheet spriteSheet;
     private float stateTime;
 
 
 
     public Player() {
-
         position = new Vector2(2, 2);
-        spriteSheet = new Texture (Gdx.files.internal("image/aliens (1).png"));
-
-        TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, 70, 100);
-
-        int counter = 0;
-        for(int row = 0; row < spriteSheetFrames.length; row++){
-            for(int column = 0; column < spriteSheetFrames[row].length; column++){
-                counter++;
-            }
-        }
-
-        spriteFrames = new TextureRegion[counter];
-
-        counter = 0;
-        for (TextureRegion[] row : spriteSheetFrames){
-            for(TextureRegion sprite : row){
-                spriteFrames[counter++] = sprite;
-            }
-        }
-        TextureRegion[] animationFrames = new TextureRegion[2];
-        animationFrames[0]= spriteFrames[9];
-        animationFrames[1]= spriteFrames[10];
-        animation = new Animation(0.25f, animationFrames);
+        spriteSheet = new Spritesheet();
+        animation = spriteSheet.createAnimation();
         stateTime = 0f;
     }
 
