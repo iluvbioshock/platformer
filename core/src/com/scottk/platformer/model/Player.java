@@ -16,12 +16,14 @@ public class Player {
     public Animation animation;
     public Spritesheet spriteSheet;
     private float stateTime;
+    public int width;
+    public int height;
 
 
 
     public Player() {
         position = new Vector2(2, 2);
-        spriteSheet = new Spritesheet();
+        spriteSheet = new Spritesheet("image/aliens (1).png", 70, 100);
         animation = spriteSheet.createAnimation();
         stateTime = 0f;
     }

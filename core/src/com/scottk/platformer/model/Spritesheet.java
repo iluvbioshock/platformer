@@ -13,10 +13,10 @@ public class Spritesheet {
     public Animation animation;
     public TextureRegion[] spriteFrames;
 
-    public Spritesheet() {
-        spriteSheet = new Texture(Gdx.files.internal("image/aliens (1).png"));
+    public Spritesheet(String pathToFile, int width, int height) {
+        spriteSheet = new Texture(Gdx.files.internal(pathToFile));
 
-        TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, 70, 100);
+        TextureRegion[][] spriteSheetFrames = TextureRegion.split(spriteSheet, width, height);
 
         int counter = 0;
         for (int row = 0; row < spriteSheetFrames.length; row++) {
