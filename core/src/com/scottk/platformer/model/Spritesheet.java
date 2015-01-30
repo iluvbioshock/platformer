@@ -35,11 +35,15 @@ public class Spritesheet {
         }
 
     }
-    public  Animation createAnimation(){
-        TextureRegion[] animationFrames = new TextureRegion[2];
-        animationFrames[0] = spriteFrames[9];
-        animationFrames[1] = spriteFrames[10];
-        animation = new Animation(0.25f, animationFrames);
+    public  Animation createAnimation(int startFrame, int lastFrame, float animationSpeed){
+        int counter = (lastFrame + 1) - startFrame;
+        TextureRegion[] animationFrames = new TextureRegion[counter];
+
+        for(int index = lastFrame; index >= startFrame; index--){
+            animationFrames[--counter] = spriteFrames[index];
+        }
+
+        animation = new Animation(animationSpeed, animationFrames);
         return animation;
 
     }

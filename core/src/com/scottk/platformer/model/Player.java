@@ -23,13 +23,15 @@ public class Player {
 
     public Player() {
         position = new Vector2(2, 2);
+        width = 70;
+        height = 100;
         spriteSheet = new Spritesheet("image/aliens (1).png", 70, 100);
         animation = spriteSheet.createAnimation();
         stateTime = 0f;
     }
 
     public void draw(Batch spriteBatch){
-        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, 70 * (1/70f), 100 * (1/70f));
+        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
     }
 
     public void update(float deltaTime){
