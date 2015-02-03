@@ -26,7 +26,8 @@ public class Player {
         width = 70;
         height = 100;
         spriteSheet = new Spritesheet("image/aliens (1).png", 70, 100);
-        animation = spriteSheet.createAnimation();
+        animation = spriteSheet.createAnimation(9, 10, 0.25f);
+        animation= spriteSheet.flipAnimation(animation);
         stateTime = 0f;
     }
 
