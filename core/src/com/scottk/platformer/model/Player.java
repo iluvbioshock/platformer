@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.HashMap;
+
 /**
  * Created by Student on 12/11/2014.
  */
@@ -18,6 +20,9 @@ public class Player {
     private float stateTime;
     public int width;
     public int height;
+    public String currentAnimation;
+
+    private HashMap<String, Animation> animations;
 
 
 
@@ -26,13 +31,16 @@ public class Player {
         width = 70;
         height = 100;
         spriteSheet = new Spritesheet("image/aliens (1).png", 70, 100);
-        animation = spriteSheet.createAnimation(9, 10, 0.25f);
-        animation= spriteSheet.flipAnimation(animation);
+        animations = new HashMap<String, Animation>();
+
+        animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.25f));
+        animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
+        currentAnimation = "walkRight";
         stateTime = 0f;
     }
 
     public void draw(Batch spriteBatch){
-        spriteBatch.draw(animation.getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
+        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
     }
 
     public void update(float deltaTime){
