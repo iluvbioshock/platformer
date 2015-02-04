@@ -36,6 +36,7 @@ public class Player {
         animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.25f));
         animations.put("walkLeft", spriteSheet.flipAnimation(animations.get("walkRight"), true, false));
         currentAnimation = "walkRight";
+
         stateTime = 0f;
     }
 
@@ -44,7 +45,7 @@ public class Player {
     }
 
     public void update(float deltaTime){
-        position.x += deltaTime;
+        //position.x += deltaTime;
         stateTime += deltaTime;
     };
 }

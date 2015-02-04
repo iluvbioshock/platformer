@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.scottk.platformer.model.Player;
 
 public class GameScreen implements Screen {
@@ -16,10 +19,16 @@ public class GameScreen implements Screen {
     public OrthographicCamera camera;
     public Player player;
     public Batch spriteBatch;
+
+    public static World gameWorld;
+    private Box2DDebugRenderer debugRenderer;
+
     public GameScreen() {
 
         map = new TmxMapLoader().load("image/map01.tmx");
         renderer = new OrthogonalTiledMapRenderer(map, 1/70f);
+        gameWorld = new World(new Vector2(0, -10), true);
+        debugRenderer = new Box2DDebugRenderer();
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
         camera = new OrthographicCamera(14f, 14f * (height / width));
@@ -48,6 +57,8 @@ public class GameScreen implements Screen {
         spriteBatch.begin();
         player.draw(spriteBatch);
         spriteBatch.end();
+
+        debugRenderer.render(gameWorld, camera.combined);
 
     }
 
