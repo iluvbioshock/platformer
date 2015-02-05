@@ -22,18 +22,18 @@ public class Player {
     public Vector2 position;
     public Spritesheet spriteSheet;
     private float stateTime;
-    public int width;
-    public int height;
+    public float width;
+    public float height;
     public String currentAnimation;
     private HashMap<String, Animation> animations;
 
 
 
-    public Player() {
-        position = new Vector2(2, 2);
-        width = 70;
-        height = 100;
-        spriteSheet = new Spritesheet("image/aliens (1).png", 70, 100);
+    public Player(int width, int height) {
+        position = new Vector2(3, 3);
+        this.width = (1/70f);
+        this.height = (1/100f);
+        spriteSheet = new Spritesheet("image/aliens (1).png", width, height);
         animations = new HashMap<String, Animation>();
 
         BodyDef bodyDefinition = new BodyDef();
@@ -44,7 +44,7 @@ public class Player {
         playerBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();
-        rectangleShape.setAsBox(width / 2f, height / 2f, new Vector2(width / 2f, height / 2f), 0f);
+        rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(width / 2f, height / 2f), 0f);
 
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
@@ -70,7 +70,7 @@ public class Player {
     }
 
     public void draw(Batch spriteBatch){
-        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width * (1/70f), height * (1/70f));
+        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);
     }
 
     public void update(float deltaTime){
