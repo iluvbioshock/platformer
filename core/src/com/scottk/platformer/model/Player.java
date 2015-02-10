@@ -2,7 +2,7 @@ package com.scottk.platformer.model;
 
 import com.badlogic.gdx.Gdx;
 
-import com.badlogic.gdx.graphics.Texture;
+
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.scottk.platformer.controller.LevelController;
 import com.scottk.platformer.view.GameScreen;
 
 import java.util.HashMap;
@@ -31,8 +32,8 @@ public class Player {
 
     public Player(int width, int height) {
         position = new Vector2(3, 3);
-        this.width = (1/70f);
-        this.height = (1/100f);
+        this.width = width * LevelController.UNIT_SCALE;
+        this.height = height * LevelController.UNIT_SCALE;
         spriteSheet = new Spritesheet("image/aliens (1).png", width, height);
         animations = new HashMap<String, Animation>();
 
@@ -40,7 +41,7 @@ public class Player {
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
 
-         Body playerBody = GameScreen.gameWorld.createBody(bodyDefinition);
+         Body playerBody = LevelController.gameWorld.createBody(bodyDefinition);
         playerBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();

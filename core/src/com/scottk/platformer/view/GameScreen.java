@@ -5,11 +5,11 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.scottk.platformer.controller.CameraController;
 import com.scottk.platformer.controller.LevelController;
+import com.scottk.platformer.controller.PlayerController;
 import com.scottk.platformer.model.Player;
 
 public class GameScreen implements Screen {
 
-    public Player player;
 
 
 
@@ -17,8 +17,9 @@ public class GameScreen implements Screen {
 
         LevelController.initializedController();
         CameraController.initializeController();
+        PlayerController.initializeController();
 
-        player = new Player(70, 100);
+     LevelController.draw();
     }
 
     @Override
@@ -33,8 +34,8 @@ public class GameScreen implements Screen {
 
         CameraController.update();
         LevelController.update(delta);
+        PlayerController.update(delta);
 
-        player.update(delta);
 
         LevelController.draw();
 
