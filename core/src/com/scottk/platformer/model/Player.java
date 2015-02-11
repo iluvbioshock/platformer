@@ -29,16 +29,16 @@ public class Player extends Sprite {
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
 
-         Body playerBody = LevelController.gameWorld.createBody(bodyDefinition);
-        playerBody.setUserData(this);
+         physicsBody = LevelController.gameWorld.createBody(bodyDefinition);
+        physicsBody.setUserData(this);
 
         PolygonShape rectangleShape = new PolygonShape();
-        rectangleShape.setAsBox(this.width / 2f, this.height / 2f, new Vector2(width / 2f, height / 2f), 0f);
+        rectangleShape.setAsBox(this.width / 2, this.height / 2, new Vector2(this.width / 2, this.height / 2), 0f);
 
         FixtureDef fixtureDefinition = new FixtureDef();
         fixtureDefinition.shape = rectangleShape;
 
-        playerBody.createFixture(fixtureDefinition);
+       physicsBody.createFixture(fixtureDefinition);
         rectangleShape.dispose();
 
         animations.put("walkRight", spriteSheet.createAnimation(9, 10, 0.25f));
