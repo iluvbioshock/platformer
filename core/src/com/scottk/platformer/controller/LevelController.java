@@ -30,16 +30,19 @@ public class LevelController {
     public static void  initializedController(){
         level = new Level("image/map01.tmx");
         renderer = new OrthogonalTiledMapRenderer(level.map, UNIT_SCALE);
-        gameWorld = new World(new Vector2(0, -10), true);
+
+        gameWorld = new World(new Vector2(0, 0), true);
         worldbodies = new Array<Body>();
         debugRenderer = new Box2DDebugRenderer();
 
         spriteBatch =  renderer.getSpriteBatch();
+
+        PlayerController.initializeController();
     }
 
     public static void draw(){
         spriteBatch.begin();
-        PlayerController.player.draw(spriteBatch);
+        PlayerController.draw(spriteBatch);
         spriteBatch.end();
         debugRenderer.render(gameWorld, CameraController.camera.combined);
 
@@ -57,11 +60,13 @@ public class LevelController {
         worldbodies.clear();
         gameWorld.getBodies(worldbodies);
 
-        for (Body body = worldbodies) {
-            Sprite playerBody = (Sprite)body.getUserData();
-            playerBody.position =  body.getPosition();
-        }
+        for (Body body : worldbodies) {
+            Sprite spriteBody = (Sprite)body.getUserData();
 
+            if (spriteBody != null){
+                spriteBody.position = body.getPosition();
+            }
         }
     }
+}
 

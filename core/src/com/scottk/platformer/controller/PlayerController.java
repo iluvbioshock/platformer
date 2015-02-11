@@ -1,5 +1,6 @@
 package com.scottk.platformer.controller;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.scottk.platformer.model.Player;
 
@@ -14,13 +15,14 @@ public class PlayerController {
 
 
     }
-    public  static void draw(){
 
-    }
     public static void update(float deltaTime){
         player.update(deltaTime);
     }
+        public  static void draw(Batch spriteBatch){
+            player.draw(spriteBatch);
 
+    }
 }
 
 
