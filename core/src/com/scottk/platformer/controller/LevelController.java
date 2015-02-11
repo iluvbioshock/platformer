@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.scottk.platformer.model.Level;
 import com.scottk.platformer.model.Player;
+import com.scottk.platformer.model.Sprite;
 
 /**
  * Created by Student on 1/26/2015.
@@ -57,7 +58,7 @@ public class LevelController {
         gameWorld.getBodies(worldbodies);
 
         for (Body body = worldbodies) {
-            Player playerBody = (Player)body.getUserData();
+            Sprite playerBody = (Sprite)body.getUserData();
             playerBody.position =  body.getPosition();
         }
 

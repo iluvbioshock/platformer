@@ -1,16 +1,20 @@
 package com.scottk.platformer.controller;
 
+import com.badlogic.gdx.math.Vector2;
 import com.scottk.platformer.model.Player;
 
 /**
  * Created by Student on 1/26/2015.
  */
 public class PlayerController {
-    public Player player;
+    public static Player player;
 
     public static void initializeController(){
-        player = new Player(70, 100);
+        player = new Player(new Vector2(3,3),70, 100);
 
+
+    }
+    public  static void draw(){
 
     }
     public static void update(float deltaTime){

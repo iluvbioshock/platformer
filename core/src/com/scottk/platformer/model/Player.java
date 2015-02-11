@@ -19,24 +19,12 @@ import java.util.HashMap;
 /**
  * Created by Student on 12/11/2014.
  */
-public class Player {
-    public Vector2 position;
-    public Spritesheet spriteSheet;
-    private float stateTime;
-    public float width;
-    public float height;
-    public String currentAnimation;
-    private HashMap<String, Animation> animations;
+public class Player extends Sprite {
 
 
 
-    public Player(int width, int height) {
-        position = new Vector2(3, 3);
-        this.width = width * LevelController.UNIT_SCALE;
-        this.height = height * LevelController.UNIT_SCALE;
-        spriteSheet = new Spritesheet("image/aliens (1).png", width, height);
-        animations = new HashMap<String, Animation>();
-
+    public Player(Vector2 position, int width, int height) {
+        super(position, width, height);
         BodyDef bodyDefinition = new BodyDef();
         bodyDefinition.type = BodyDef.BodyType.DynamicBody;
         bodyDefinition.position.set(position);
@@ -65,17 +53,26 @@ public class Player {
         animations.put("hurtRight", spriteSheet.createAnimation(4, 4, 0.25f));
         animations.put("hurtLeft", spriteSheet.flipAnimation(animations.get("hurtRight"), true, false));
 
-        currentAnimation = "walkRight";
+        animations.put("jumpRight", spriteSheet.createAnimation(5, 5, 0.25f));
+        animations.put("jumpLeft", spriteSheet.flipAnimation(animations.get("jumpRight"), true, false));
 
-        stateTime = 0f;
+        animations.put("idleRight", spriteSheet.createAnimation(6, 6, 0.25f));
+        animations.put("idleLeft", spriteSheet.flipAnimation(animations.get("idleRight"), true, false));
+
+        animations.put("swimRight", spriteSheet.createAnimation(7, 8, 0.5f));
+        animations.put("swimLeft", spriteSheet.flipAnimation(animations.get("swimRight"), true, false));
+
+
+        currentAnimation = "hurtRight";
+
+
     }
 
     public void draw(Batch spriteBatch){
-        spriteBatch.draw(animations.get(currentAnimation).getKeyFrame(stateTime, true), position.x, position.y, width, height);
+        super.draw(spriteBatch);
     }
 
     public void update(float deltaTime){
-        //position.x += deltaTime;
-        stateTime += deltaTime;
+        super.update(deltaTime);
     };
 }
