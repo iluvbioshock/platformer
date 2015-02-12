@@ -12,7 +12,11 @@ import com.scottk.platformer.model.Player;
 public class PlayerController {
     public static Player player;
 
+    public static final float VELOCITY = 1f;
+    public static final float MAX_VELOCITY = 5f;
+
     public static void initializeController(){
+
         player = new Player(new Vector2(3,3),70, 100);
     }
 
@@ -28,10 +32,13 @@ public class PlayerController {
         Vector2 velocity = player.physicsBody.getLinearVelocity();
         Vector2 position = player.physicsBody.getPosition();
 
+        if(Math.abs(velocity.x) > MAX_VELOCITY){
+            velocity.x = Math.signum(velocity.x) * MAX_VELOCITY;
         player.physicsBody.setLinearVelocity(velocity.x, velocity.y);
+        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            player.physicsBody.applyAngularImpulse(VELOCITY, 0, position.x, position.y, true);
+            player.physicsBody.applyLinearImpulse(VELOCITY, 0, position.x, position.y, true);
         }
     }
 }

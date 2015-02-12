@@ -53,7 +53,7 @@ public class LevelController {
         renderer.render();
         PlayerController.update(deltaTime);
         gameWorld.step(1/100f, 1, 1);
-
+        updateWorldBodies();
     }
 
     private static void updateWorldBodies(){
